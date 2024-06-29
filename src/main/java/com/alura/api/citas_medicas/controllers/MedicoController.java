@@ -1,9 +1,6 @@
 package com.alura.api.citas_medicas.controllers;
 
-import com.alura.api.citas_medicas.medico.DatosListadoMedico;
-import com.alura.api.citas_medicas.medico.DatosRegistroMedico;
-import com.alura.api.citas_medicas.medico.IMedicoRepository;
-import com.alura.api.citas_medicas.medico.Medico;
+import com.alura.api.citas_medicas.medico.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,8 +31,8 @@ public class MedicoController {
     }
 
     @PutMapping
-    public void actualizarMedico(){
-
+    public void actualizarMedico(DatosActualizarMedico datosActualizarMedico){
+        Medico medico = medicoRepository.getReferenceById(datosActualizarMedico.id());
     }
 }
 
