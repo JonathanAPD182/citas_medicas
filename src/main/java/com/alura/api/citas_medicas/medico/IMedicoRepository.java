@@ -1,4 +1,7 @@
 package com.alura.api.citas_medicas.medico;
 
-public interface IMedicoRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IMedicoRepository extends JpaRepository<Medico, Long> {
+
 }
