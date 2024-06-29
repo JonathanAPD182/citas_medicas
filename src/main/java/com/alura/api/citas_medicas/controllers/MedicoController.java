@@ -1,14 +1,17 @@
 package com.alura.api.citas_medicas.controllers;
 
+import com.alura.api.citas_medicas.medico.DatosListadoMedico;
 import com.alura.api.citas_medicas.medico.DatosRegistroMedico;
 import com.alura.api.citas_medicas.medico.IMedicoRepository;
 import com.alura.api.citas_medicas.medico.Medico;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/medicos")
@@ -25,6 +28,9 @@ public class MedicoController {
         medicoRepository.save(new Medico(datosRegistroMedico));
     }
 
-    
+    @GetMapping
+    public Page<DatosListadoMedico> listadoMedicos(@PageableDefault(size = 2) Pageable paginacion){
+        return medicoRepository.findAll(paginacion).map(DatosListadoMedico::new);
+    }
 }
 
