@@ -1,4 +1,4 @@
-package com.alura.api.citas_medicas.medico;
+package com.alura.api.citas_medicas.domain.medico;
 
 public record DatosListadoMedico(Long id, String nombre, String especialidad, String documento, String email) {
 

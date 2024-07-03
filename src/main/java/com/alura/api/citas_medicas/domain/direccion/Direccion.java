@@ -1,4 +1,4 @@
-package com.alura.api.citas_medicas.direccion;
+package com.alura.api.citas_medicas.domain.direccion;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

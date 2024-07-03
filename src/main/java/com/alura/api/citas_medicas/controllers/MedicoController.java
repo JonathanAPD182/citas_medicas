@@ -1,7 +1,7 @@
 package com.alura.api.citas_medicas.controllers;
 
-import com.alura.api.citas_medicas.direccion.DatosDireccion;
-import com.alura.api.citas_medicas.medico.*;
+import com.alura.api.citas_medicas.domain.direccion.DatosDireccion;
+import com.alura.api.citas_medicas.domain.medico.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +22,20 @@ public class MedicoController {
     private IMedicoRepository medicoRepository;
 
     @GetMapping
-    public Page<DatosListadoMedico> listadoMedicos(@PageableDefault(size = 2) Pageable paginacion){
-//        return medicoRepository.findAll(paginacion).map(DatosListadoMedico::new);
-        return medicoRepository.findByActivoTrue(paginacion).map(DatosListadoMedico::new);
+    public ResponseEntity<Page<DatosListadoMedico>> listadoMedicos(@PageableDefault(size = 2) Pageable paginacion){
+        return ResponseEntity.ok(medicoRepository.findByActivoTrue(paginacion).map(DatosListadoMedico::new));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DatosRespuestaMedico> retornarDatosMedico(@PathVariable Long id){
+        Medico medico = medicoRepository.getReferenceById(id);
+        var datosMedico = new DatosRespuestaMedico(
+                medico.getId(), medico.getNombre(), medico.getEmail(), medico.getTelefono(), medico.getEspecialidad().toString(),
+                new DatosDireccion(
+                        medico.getDireccion().getCalle(), medico.getDireccion().getDistrito(),
+                        medico.getDireccion().getCiudad(), medico.getDireccion().getNumero(),
+                        medico.getDireccion().getComplemento()));
+        return ResponseEntity.ok(datosMedico);
     }
 
     @PostMapping

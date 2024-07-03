@@ -1,4 +1,4 @@
-package com.alura.api.citas_medicas.medico;
+package com.alura.api.citas_medicas.domain.medico;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

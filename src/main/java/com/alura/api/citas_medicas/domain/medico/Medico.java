@@ -1,6 +1,6 @@
-package com.alura.api.citas_medicas.medico;
+package com.alura.api.citas_medicas.domain.medico;
 
-import com.alura.api.citas_medicas.direccion.Direccion;
+import com.alura.api.citas_medicas.domain.direccion.Direccion;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

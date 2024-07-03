@@ -1,4 +1,4 @@
-package com.alura.api.citas_medicas.medico;
+package com.alura.api.citas_medicas.domain.medico;
 
 public enum Especialidad {
     ORTOPEDIA,

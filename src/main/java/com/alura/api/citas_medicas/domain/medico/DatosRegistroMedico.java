@@ -1,6 +1,6 @@
-package com.alura.api.citas_medicas.medico;
+package com.alura.api.citas_medicas.domain.medico;
 
-import com.alura.api.citas_medicas.direccion.DatosDireccion;
+import com.alura.api.citas_medicas.domain.direccion.DatosDireccion;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
