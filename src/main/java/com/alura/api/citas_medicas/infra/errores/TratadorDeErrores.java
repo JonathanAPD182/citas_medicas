@@ -1,4 +1,4 @@
-package com.alura.api.citas_medicas.infra;
+package com.alura.api.citas_medicas.infra.errores;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
